@@ -1,0 +1,41 @@
+﻿@*
+  
+*@
+@{
+}
+@model List<LibraryManagementWebApp.Models.Entities.Admin>
+<h1>Admins</h1>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>Admin Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var admin in Model)
+        {
+            <tr>
+                <td>@admin.UserId</td>
+                <td>@admin.AdminId</td>
+                <td>@admin.AdminName</td>
+                <td>@admin.AdminEmail</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="UserAdmin" asp-action="EditAdmins" asp-route-id="@admin.AdminId">Edit</a>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-secondary ms-2" asp-action="AdminHomePage" asp-controller="AdminHomePage">DashBoard</a>
